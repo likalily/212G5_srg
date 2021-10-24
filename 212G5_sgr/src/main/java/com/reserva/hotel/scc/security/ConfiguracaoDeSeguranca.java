@@ -15,8 +15,8 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 	// configuracao de autorizacao
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/clientes").hasAnyRole("ADMIN", "VEND") //
-				.antMatchers("/fornecedores").hasRole("ADMIN") // somente login maria
+		http.authorizeRequests().antMatchers("/clientes").hasAnyRole("VEND") //
+				.antMatchers("/colaboradores").hasRole("ADMIN") // somente login maria
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.logoutSuccessUrl("/login?logout").permitAll();
 	}

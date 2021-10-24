@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Rancho');
 menu-page {
-	width: 1400px;
+	width: 1200px;
 	padding: 8% 0 0;
 	margin: auto;
 }
@@ -13,7 +13,7 @@ div {
 form {
 	top: 300px;
 	background: #FFFFFF;
-	max-width: 360px;
+	max-width: 1060px;
 	margin: 0 auto 100px;
 	padding: 45px;
 	text-align: center;
@@ -22,6 +22,18 @@ form {
 	z-index: 1;
 }
 li {
-	left: 950px;
+	left: 650px;
 }
-
+h3 {
+		font-family: Rancho;
+		font-Size: 25px;
+}
+p {
+	font-Size: 18px;
+}
+a {
+	font-Size: 25px;
+}
+h1 {
+	text-align: center;
+}
