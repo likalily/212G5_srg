@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Consultar quartos</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+</head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<body>
+	<header th:replace="fragments/header :: menuSuperior">
+		<div>header</div>
+	</header>
+	<div class="panel panel-default"
+		style="margin-left: 10%; margin-right: 10%; margin-top: 2%;">
+		<div class="panel-heading">
+			<center>
+				<h5 class="panel-title">Lista de quartos</h5>
+				<br>
+			</center>
+			<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+				rel="stylesheet" />
+			<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+				rel="stylesheet" />
+		</div>
+		<div class="panel-body" th:switch="${quartos}">
+			<h5 th:case="null">Não existem quartos cadastradas ainda!</h5>
+			<div th:case="*">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Número do quarto</th>
+							<th>Categoria do quarto</th>
+							<th>Quantidade de dias</th>
+							<th>Valor da diária</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="quarto : ${quartos}">
+							<td th:text="${quarto.idQuarto}"></td>
+							<td th:text="${quarto.numQuarto}"></td>
+							<td th:text="${quarto.categoriaQuarto}"></td>
+							<td th:text="${quarto.quantidadeDias}"></td>
+							<td th:text="${quarto.valorQuarto}"></td>
+							<td><a class="btn btn-sm btn-success"
+								th:href="@{/sig/quartos/{idQuarto}(idQuarto=${quarto.idQuarto})}">Editar</a>
+							</td>
+							<td><a class="delete btn btn-sm btn-danger"
+								th:href="@{/sig/quarto/{idQuarto}(idQuarto=${quarto.idQuarto})}">Excluir</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+</body>
+</html>

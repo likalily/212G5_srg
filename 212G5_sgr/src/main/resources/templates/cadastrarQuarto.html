@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/estilo-cadastro.css}" />
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Cadastrar quarto</title>
+<script type="text/javascript">
+function consulta() {
+window.open("/sig/quartos");
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=2">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+</head>
+<body>
+	<header th:replace="fragments/header :: menuSuperior">
+		<div>header</div>
+	</header>
+	<div class="container my-5">
+		<br />
+		<h3>Cadastrar quarto</h3>
+	<table>
+	<tr>
+	<td>
+	<img th:src="@{/images/mensageiro.png}" />
+	</td>
+	<td>
+		<td class="card">
+			<td class="card-body">
+				<td class="col-md-8">
+					<form action="#" th:action="@{/sig/quartos}" th:object="${quarto}"
+						method="post">
+
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="numQuarto" class="col-form-label">Código do
+									quarto</label> <input type="number" th:field="*{numQuarto}"
+									class="form-control" id="numQuarto"
+									placeholder="Código do quarto do quarto"> <span
+									th:if="${#fields.hasErrors('numQuarto')}"
+									th:errors="*{numQuarto}" class="textdanger"></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="categoriaQuarto" class="col-form-label">Tipo
+									de quarto</label> <select th:field="*{categoriaQuarto}"
+									class="form-control" id="categoriaQuarto">
+									<option value="Simples">Solteiro</option>
+									<option value="Intermediário">Moderno</option>
+									<option value="Premium">Casal</option>
+									<option value="Premium">Especial</option>
+								</select> <span th:if="${#fields.hasErrors('categoriaQuarto')}"
+									th:errors="*{categoriaQuarto}" class="textdanger"> </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="valorQuarto" class="col-form-label">Valor da
+									diária</label> <select th:field="*{valorQuarto}" class="form-control"
+									id="valorQuarto">
+									<option value=70.00>R$ 40,00</option>
+									<option value=90.00>R$ 70,00</option>
+									<option value=120.00>R$ 90,00</option>
+									<option value=120.00>R$ 110,00</option>
+									<option value=120.00>R$ 130,00</option>
+									<option value=120.00>R$ 170,00</option>
+								</select> <span th:if="${#fields.hasErrors('valorQuarto')}"
+									th:errors="*{valorQuarto}" class="textdanger"> </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="quantidadeDias" class="col-form-label">Quantidade
+									de dias</label> <input type="number" th:field="*{quantidadeDias}"
+									class="form-control" id="quantidadeDias"
+									placeholder="Quantidade de dias"> <span
+									th:if="${#fields.hasErrors('quantidadeDias')}"
+									th:errors="*{quantidadeDias}" class="textdanger"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-8">
+							<input type="submit" class="btn btn-success"
+								value="Cadastrar quarto"> <input type="button"
+								class="btn btn-info" value="Consultar quarto"
+								onclick="consulta();">
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+		</div>
+		
+			<h6 th:text="${message}" class="text-danger"></h6>
+		</div>
+		<footer th:replace="fragments/footer :: rodape">
+			<div>footer</div>
+		</footer>
+</body>
+</html>
